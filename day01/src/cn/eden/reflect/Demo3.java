@@ -74,4 +74,20 @@ public class Demo3 {
 		Method method = clazz.getDeclaredMethod("a", int.class);
 		method.invoke(null, 1);
 	}
+	
+	/**
+	 * 解剖方法：public static void main(String[] args) {...}
+	 * @throws Exception
+	 */
+	@Test
+	public void test6() throws Exception {
+		Class clazz = Class.forName("cn.eden.reflect.Person");
+		Method method = clazz.getMethod("main", String[].class);
+		//有毒
+		method.invoke(null, (Object)new String[]{"a", "b"});
+		
+		//jdk1.5 method.invoke(String methodName, Object...args);
+		//jdk1.4 method.invoke(String methodName, Object[] obj);
+		//jdk1.4 method.invoke(String methodName, new Object[]{"a", "b"};
+	}
 }

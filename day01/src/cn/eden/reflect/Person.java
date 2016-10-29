@@ -4,8 +4,8 @@ import java.io.InputStream;
 import java.util.List;
 
 public class Person {
-	private String name;
-	private String password;
+	public String name = "eden";
+	public String password = "pwd";
 	
 	public Person() {
 		System.out.println("空构造");
@@ -54,5 +54,9 @@ public class Person {
 	
 	public static void a(int num) {
 		System.out.println("静态方法，参数信息：" + num);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("main方法");
 	}
 }
