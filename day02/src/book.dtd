@@ -1,0 +1,55 @@
+<!ENTITY xxx "javaweb开发">
+
+<!--
+	元素
+	<!ELEMENT 元素名称 元素类型> 
+	元素类型可以是元素内容或类型
+	1.元素内容表示元素可以出现的次数
+		+: 一次或多次 (书+)
+ 		?: 0次或一次 (书?)
+		*: 0次或多次  (书*)
+	2.类型
+		EMPTY：用于定义空元素，例如<br/> <hr/>
+		ANY：表示元素内容为任意类型。
+	
+	元素的属性	
+	<!ATTLIST 元素名 
+		属性名1 属性值类型 设置说明
+		属性名2 属性值类型 设置说明
+		……
+	>
+	
+	属性值：
+	#REQUIRED：必须设置该属性
+	#IMPLIED：可以设置也可以不设置 
+	#FIXED：说明该属性的取值固定为一个值，在 XML 文件中不能为该属性设置其它值。但需要为该属性提供这个值 
+	直接使用默认值：在 XML 中可以设置该值也可以不设置该属性值。若没设置则使用默认值。
+	
+	属性值类型：  
+	CDATA 表示属性值为普通文本字符串。
+	ENUMERATED 枚举
+	ID
+	ENTITY 实体
+	
+	
+-->
+<!ELEMENT 书架 (书+)> <!--<!ELEMENT 元素名称 元素内容> -->
+<!ELEMENT 书 (书名,作者,售价,测试空,测试任何)>
+<!ELEMENT 书名 (#PCDATA)>
+<!ELEMENT 作者 (#PCDATA)>
+<!ELEMENT 售价 (#PCDATA)>
+<!ELEMENT 测试空 EMPTY>
+<!ELEMENT 测试任何 ANY>
+
+<!ATTLIST 书
+	类别 CDATA #REQUIRED
+	颜色 CDATA #IMPLIED
+>
+<!ATTLIST 作者 
+	 姓名 CDATA #IMPLIED
+	 年龄 CDATA #IMPLIED
+	 联系信息 CDATA #REQUIRED
+	 网站职务 CDATA #FIXED "页面作者"
+	 个人爱好 CDATA "上网"
+> 
+
