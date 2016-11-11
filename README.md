@@ -164,10 +164,48 @@ DTD约束即可以作为一个单独的文件编写，也可以在XML文件内�
 		*: 0次或多次  (书*)
 4.也可使用圆括号( )批量设置，例
 	`<!ELEMENT MYFILE ((TITLE*, AUTHOR?, EMAIL)* | COMMENT)>`
-
-
-
--  
+- 属性定义1
+1.xml文档中的标签属性需通过ATTLIST为其设置属性
+2.语法格式：
+```
+<!ATTLIST 元素名 
+	属性名1 属性值类型 设置说明
+	属性名2 属性值类型 设置说明
+	……
+>
+<!--
+	设置说明：
+	#REQUIRED：必须设置该属性
+	#IMPLIED：可以设置也可以不设置 
+	#FIXED：说明该属性的取值固定为一个值，在 XML 文件中不能为该属性设置其它值。但需要为该属性提供这个值 
+	直接使用默认值：在 XML 中可以设置该值也可以不设置该属性值。若没设置则使用默认值。 
+	如：	
+-->
+<!ATTLIST 页面作者 
+	姓名 CDATA #IMPLIED 
+	年龄 CDATA #IMPLIED 
+	联系信息 CDATA #REQUIRED 
+	网站职务 CDATA #FIXED "页面作者" 
+	个人爱好 CDATA "上网"
+> 
+```
+3.属性声明举例：
+```
+<!ATTLIST 商品
+	类别 CDATA #REQUIRED
+	颜色 CDATA #IMPLIED
+>
+```
+4.对应XML文件：
+```
+<商品 类别="服装" 颜色="黄色">…</商品> 
+<商品 类别="服装">…</商品> 
+```
+5.常用属性值类型
+CDATA：属性值为普通文本字符串。
+ENUMERATED:枚举
+ID:id值
+ENTITY(实体)
 
 
 
